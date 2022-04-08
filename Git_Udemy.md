@@ -22,8 +22,25 @@ Repository contains all files, history, config managed by Git.
 >Branches: other source control systems, timeline contains changes. (Master Branch)
 
 ## Section 2: Git Installation
+> Mac: terminal type: git version
 
 ## Section 3: Git Quick Start
+
+> Set up local git user name and email.
+```
+git version
+git config --global user.name "YourName"
+git config --global user.email "EmailAddress@gmail.com"
+git config --global --list
+```
+
+>Clone the Github repository and check status  
+Plase first use terminal to go the correct directory. cd../ and pwd command 
+```
+git clone https://github.com/RunzheZ/Git.git
+git status
+```
+git status will report the changes between working directory and staging area, local repository and remoate repository.
 
 ## Section 4: Text Editor Installation
 
