@@ -42,6 +42,32 @@ git status
 ```
 git status will report the changes between working directory and staging area, local repository and remoate repository.
 
+>Create a new start.txt file in the project file.
+```
+echo "Test Git Quick Start Demo >> start.txt
+ls
+cat start.txt
+git status
+```
+
+>Git **add** file, to move start.txt from working directory to staging area (committed)
+```
+git add start.txt
+git status
+```
+
+>Git **commite** file. The new file is moved from staging area into local repository. **The file still in local**
+```
+git commit -m "Adding start text file"
+git status
+```
+
+>Git **push** file to remote (online). "origin" is the remote name when clone the repository. "master" is the branch name.
+```
+git push origin master
+```
+
+
 ## Section 4: Text Editor Installation
 
 ## Section 5: Basic Git Commands
