@@ -67,8 +67,40 @@ git status
 git push origin master
 ```
 
-
 ## Section 4: Text Editor Installation
+
+>Windows Text Editor: Notepad ++
+
+>MacOS Text Editor: [TextMate](https://macromates.com/)  
+Setup: TextMate --> Preference --> Terminal --> Install Shell Support  
+Test: Open terminal --> type "mate" to open TextMate.
+
+>Set TextMate is the default editor for Git
+```
+git config --global -e
+# This is using default editor (Vim) to show the Git config file (Quit: ESC, then ":q" or ":wq" )
+
+git confit --global core.editor "mate-w"
+# This is modify the default editor to TextMate
+
+git config --global -e
+# Check the config file again, this time it should use Textmate open config file. "Command + Q" to quit.
+```
+
+>Set TextMate profile
+```
+# In terminal open or create .tm_properties for TextMate
+mate .tm_properties
+```
+```
+# In .tm_properties file
+# General Settings
+fontName = "Menlo"
+fontSize = 24
+# "Command + S" to save, "Command + Q" to quit
+```
+
+
 
 
 ## Section 5: Basic Git Commands
