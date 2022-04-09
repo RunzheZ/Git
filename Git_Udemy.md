@@ -1,7 +1,9 @@
 # Git 
 
 This is the Git course note Udemy: [Git Complete](https://www.udemy.com/course/git-complete)
- 
+ ---
+<br/>
+
 ## Section 1: Introduction
 >What is Git:  
 Distributed source control system (Not required to be decentralized). [Wiki](https://en.wikipedia.org/wiki/Git)
@@ -20,9 +22,13 @@ Repository contains all files, history, config managed by Git.
 >Remote repository (maybe the forth state --- Github)
 
 >Branches: other source control systems, timeline contains changes. (Master Branch)
+---
+<br/>
 
 ## Section 2: Git Installation
 > Mac: terminal type: git version
+---
+<br/>
 
 ## Section 3: Git Quick Start
 
@@ -66,6 +72,8 @@ git status
 ```
 git push origin master
 ```
+---
+<br/>
 
 ## Section 4: Text Editor Installation
 
@@ -100,10 +108,24 @@ fontSize = 24
 # "Command + S" to save, "Command + Q" to quit
 ```
 
+## Section 5: Basic Git Commands (Core)
+- Staring a project with Git in three ways:  
+    1. Fresh (no source yet)  
+    2. Existing source locally  
+    3. GitHub project (Fork and clone)
+   
 
+- Basic Workflow:
+    1. Adding and editing files;  
+    2. Adding files to Git's staging area;  
+    3. Committing to Git repository;  
+    4. Push & pull changes back to Git.  
 
+- File Management:   
+    - Remane, move & deletet files.
 
-## Section 5: Basic Git Commands
+- History and Aliases:   
+    - Git log command to display the repository history, "git alias"
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
