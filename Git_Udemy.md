@@ -70,6 +70,7 @@ git push origin master
 
 ## Section 4: Text Editor Installation
 
+
 ## Section 5: Basic Git Commands
 
 ## Section 6: Visual Merge/Diff Tool Installation
