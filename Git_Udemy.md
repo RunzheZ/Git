@@ -246,7 +246,14 @@ git add .
 ```
 
 > Backing Out Changes  
->
+> This backing out is only works for the modification in staging area. This is **unstage** and **checkout** process.
+
+```bash
+git add test.txt
+git status
+git reset HEAD test.txt                 # unstage the added document
+git checkout -- test.txt                # reload the previous test.txt
+```
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
