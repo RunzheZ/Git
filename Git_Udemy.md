@@ -182,6 +182,21 @@ rm -rf web-project
    git clone https://github.com/RunzheZ
    ```
 
+### 5.2 Basic Git Workflow (add, commit, pull & push)
+This section introduce how to clone GitHub repository and update new file.
+```
+# In Git clone local repository
+pwd
+git status
+mate test.txt
+git add test.txt
+git status
+git commit      # use mate to command or git commit -m "This is commit"
+git pull origin master
+
+```
+
+
 ## Section 6: Visual Merge/Diff Tool Installation
 
 ## Section 7: Comparisons
