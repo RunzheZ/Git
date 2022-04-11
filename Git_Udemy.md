@@ -217,7 +217,8 @@ Best way to update files to remote repository is to add all the modification or 
 
 >Recursive Add  
 If we create a new deep nesting folder, such as level1/level2/level3, and each level has other new files. We need use **"git add ."** to add the recursive folders to staging area.
-```
+
+```bash
 git add .
 ```
 
