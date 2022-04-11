@@ -115,16 +115,16 @@ fontSize = 24
     3. [GitHub project (Fork and clone)](#513-github-project-clone)
    
 
-- Basic Workflow:
+- [2. Basic Workflow:](#52-basic-git-workflow-add-commit-pull--push)
     1. Adding and editing files;  
     2. Adding files to Git's staging area;  
     3. Committing to Git repository;  
     4. Push & pull changes back to Git.  
 
-- File Management:   
+- [3. File Management:](#53-file-management-remane-move--deletet-files)   
     - Remane, move & deletet files.
 
-- History and Aliases:   
+- 4. History and Aliases:   
     - Git log command to display the repository history, "git alias"
 
 ### 5.1 Staring a project with Git in three ways
@@ -191,11 +191,17 @@ git status
 mate test.txt
 git add test.txt
 git status
-git commit      # use mate to command or git commit -m "This is commit"
-git pull origin master
-
+git commit              # use mate to command or git commit -m "This is commit"
+git pull origin master  # git config pull.rebase false(merge)/true(rebase)
+git push origin master
 ```
 
+### 5.3 File Management (Remane, move & deletet files)
+Modify **".gitconfig"** file
+```
+mate ~/.gitconfig
+```
+ 
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
