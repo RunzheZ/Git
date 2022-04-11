@@ -1,10 +1,12 @@
-# Git 
+# Git
 
 This is the Git course note Udemy: [Git Complete](https://www.udemy.com/course/git-complete)
  ---
+
 <br/>
 
 ## Section 1: Introduction
+
 >What is Git:  
 Distributed source control system (Not required to be decentralized). [Wiki](https://en.wikipedia.org/wiki/Git)
 
@@ -13,11 +15,11 @@ Repository contains all files, history, config managed by Git.
 
 >Three local states of Git:  
     1. Working directory hold  
-        * Includes all files may or not managed by Git, has a hidden document /.git to save actual git repository   
+        *Includes all files may or not managed by Git, has a hidden document /.git to save actual git repository
     2. Staging area (pre-commit holding area)  
-        * Git index, a holding area for queueing up changes for next commit.   
+        * Git index, a holding area for queueing up changes for next commit.
     3. Commit - Git Repository (history)  
-        * The Git repository manages the Git commit history. 
+        * The Git repository manages the Git commit history.
 
 >Remote repository (maybe the forth state --- Github)
 
@@ -26,6 +28,7 @@ Repository contains all files, history, config managed by Git.
 <br/>
 
 ## Section 2: Git Installation
+
 > Mac: terminal type: git version
 ---
 <br/>
@@ -33,6 +36,7 @@ Repository contains all files, history, config managed by Git.
 ## Section 3: Git Quick Start
 
 > Set up local git user name and email.
+
 ```
 git version
 git config --global user.name "YourName"
@@ -41,15 +45,18 @@ git config --global --list
 ```
 
 >Clone the Github repository and check status  
-Plase first use terminal to go the correct directory. cd../ and pwd command 
+Plase first use terminal to go the correct directory. cd../ and pwd command
+
 ```
 git clone https://github.com/RunzheZ/Git.git
 git status
 ```
+
 git status will report the changes between working directory and staging area, local repository and remoate repository.
 
 >Create a new start.txt file in the project file.
-```
+
+```bash
 echo "Test Git Quick Start Demo >> start.txt
 ls
 cat start.txt
@@ -57,21 +64,25 @@ git status
 ```
 
 >Git **add** file, to move start.txt from working directory to staging area (committed)
-```
+
+```bash
 git add start.txt
 git status
 ```
 
 >Git **commite** file. The new file is moved from staging area into local repository. **The file still in local**
-```
+
+```bash
 git commit -m "Adding start text file"
 git status
 ```
 
 >Git **push** file to remote (online). "origin" is the remote name when clone the repository. "master" is the branch name.
-```
+
+```bash
 git push origin master
 ```
+
 ---
 <br/>
 
@@ -84,6 +95,7 @@ Setup: TextMate --> Preference --> Terminal --> Install Shell Support
 Test: Open terminal --> type "mate" to open TextMate.
 
 >Set TextMate is the default editor for Git
+
 ```
 git config --global -e
 # This is using default editor (Vim) to show the Git config file (Quit: ESC, then ":q" or ":wq" )
@@ -96,10 +108,12 @@ git config --global -e
 ```
 
 >Set TextMate profile
+
 ```
 # In terminal open or create .tm_properties for TextMate
 mate .tm_properties
 ```
+
 ```
 # In .tm_properties file
 # General Settings
@@ -109,11 +123,11 @@ fontSize = 24
 ```
 
 ## Section 5: Basic Git Commands (Core)
+
 - [1. Staring a project with Git in three ways:](#1-staring-a-project-with-git)  
     1. [Fresh (no source yet)](#511-fresh)  
     2. [Existing source locally](#512-existing-source-locally)  
     3. [GitHub project (Fork and clone)](#513-github-project-clone)
-   
 
 - [2. Basic Workflow:](#52-basic-git-workflow-add-commit-pull--push)
     1. Adding and editing files;  
@@ -121,11 +135,11 @@ fontSize = 24
     3. Committing to Git repository;  
     4. Push & pull changes back to Git.  
 
-- [3. File Management:](#53-file-management-remane-move--deletet-files)   
-    - Remane, move & deletet files.
+- [3. File Management:](#53-file-management-remane-move--deletet-files)
+  - Remane, move & deletet files.
 
-- 4. History and Aliases:   
-    - Git log command to display the repository history, "git alias"
+- 4. History and Aliases:
+  - Git log command to display the repository history, "git alias"
 
 ### 5.1 Staring a project with Git in three ways
 
@@ -134,7 +148,8 @@ fontSize = 24
 Start generate some filler text from [hipster ipsum](http://hipsum.co/)
 
 Create a fresh new Git repository:
-```
+
+```bash
 pwd
 cd  # choose the project directory
 git init fresh-project
@@ -150,10 +165,12 @@ git commit      ### This will open a TextMate for this commit, input the commit 
 rm- rf fresh-project/       # Remove the Git Repository
 ```
 
-#### 5.1.2 Existing Source locally 
+#### 5.1.2 Existing Source locally
+
 In this section, we will use [Initializr](http://initializr.com) to generate files as our locally Git.
 Download a .zip file to project directory.
-```
+
+```bash
 pwd
 cd GitHub
 unzip ~/Downloads/initializr-verekia-4.0.zip
@@ -170,21 +187,24 @@ cd ..
 rm -rf web-project
 ```
 
-#### 5.1.3 Github Project Clone 
+#### 5.1.3 Github Project Clone
 
 1. Sign in Github;
 2. Find the project repository, and click **"Fork"** to copy the repository to your own Github;
 3. Find the **"Clone"** options, and copy the **"HTTPS"**;
 4. Using the following command to clone the repository local.
-   ```
+
+   ```bash
    pwd
    cd Github
    git clone https://github.com/RunzheZ
    ```
 
 ### 5.2 Basic Git Workflow (add, commit, pull & push)
+
 This section introduce how to clone GitHub repository and update new file.
-```
+
+```bash
 # In Git clone local repository
 pwd
 git status
@@ -199,12 +219,15 @@ git push origin master
 ### 5.3 File Management (Remane, move & deletet files)
 
 Modify **".gitconfig"** file
-```
+
+```bash
 mate ~/.gitconfig
 ```
-> Tracked Files: the tracked files are the files are already added to Git list, not the new create file.   
+
+> Tracked Files: the tracked files are the files are already added to Git list, not the new create file.
 > If we create a new file, we need to use "git add xxx.txt" to add the new file to git tracked list.
-```
+
+```bash
 git status
 mate test.txt               # modify test.txt
 git status
@@ -223,7 +246,7 @@ git add .
 ```
 
 > Backing Out Changes  
-> 
+>
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
@@ -242,5 +265,3 @@ git add .
 ## Section 13: Updates and Errata
 
 ## Section 14: Bonus: Resources and Special Offers
-
-
