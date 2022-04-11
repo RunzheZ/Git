@@ -197,11 +197,32 @@ git push origin master
 ```
 
 ### 5.3 File Management (Remane, move & deletet files)
+
 Modify **".gitconfig"** file
 ```
 mate ~/.gitconfig
 ```
- 
+> Tracked Files: the tracked files are the files are already added to Git list, not the new create file.   
+> If we create a new file, we need to use "git add xxx.txt" to add the new file to git tracked list.
+```
+git status
+mate test.txt               # modify test.txt
+git status
+git ls-files                # To check the tracked files list
+git commit -am "Test tracked files"
+```
+
+>Eidting Files  
+Best way to update files to remote repository is to add all the modification or new files to staging area first, then commit together.
+
+>Recursive Add  
+If we create a new deep nesting folder, such as level1/level2/level3, and each level has other new files. We need use **"git add ."** to add the recursive folders to staging area.
+```
+git add .
+```
+
+> Backing Out Changes  
+> 
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
