@@ -138,7 +138,7 @@ fontSize = 24
 - [3. File Management:](#53-file-management-remane-move--deletet-files)
   - Remane, move & deletet files.
 
-- 4. History and Aliases:
+- [4. History and Aliases:](#54-history-and-aliases)
   - Git log command to display the repository history, "git alias"
 
 ### 5.1 Staring a project with Git in three ways
@@ -254,6 +254,12 @@ git status
 git reset HEAD test.txt                 # unstage the added document
 git checkout -- test.txt                # reload the previous test.txt
 ```
+
+> Renaming and Moving Files
+
+> Deleting Files
+
+### 5.4 History and Aliases
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
