@@ -15,9 +15,9 @@ Repository contains all files, history, config managed by Git.
 
 >Three local states of Git:  
     1. Working directory hold  
-        *Includes all files may or not managed by Git, has a hidden document /.git to save actual git repository
+        *Includes all files may or not managed by Git, has a hidden document /.git to save actual git repository  
     2. Staging area (pre-commit holding area)  
-        * Git index, a holding area for queueing up changes for next commit.
+        * Git index, a holding area for queueing up changes for next commit.  
     3. Commit - Git Repository (history)  
         * The Git repository manages the Git commit history.
 
