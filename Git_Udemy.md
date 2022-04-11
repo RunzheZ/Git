@@ -109,10 +109,10 @@ fontSize = 24
 ```
 
 ## Section 5: Basic Git Commands (Core)
-- Staring a project with Git in three ways:  
-    1. Fresh (no source yet)  
-    2. Existing source locally  
-    3. GitHub project (Fork and clone)
+- [1. Staring a project with Git in three ways:](#1-staring-a-project-with-git)  
+    1. [Fresh (no source yet)](#511-fresh)  
+    2. [Existing source locally](#512-existing-source-locally)  
+    3. [GitHub project (Fork and clone)](#513-github-project-clone)
    
 
 - Basic Workflow:
@@ -126,6 +126,61 @@ fontSize = 24
 
 - History and Aliases:   
     - Git log command to display the repository history, "git alias"
+
+### 5.1 Staring a project with Git in three ways
+
+#### 5.1.1 Fresh
+
+Start generate some filler text from [hipster ipsum](http://hipsum.co/)
+
+Create a fresh new Git repository:
+```
+pwd
+cd  # choose the project directory
+git init fresh-project
+ls
+ls -al
+cd .git/
+cd ..
+git status
+mate hipster.txt
+git status
+git add hipster.txt
+git commit      ### This will open a TextMate for this commit, input the commit message, Ctrl+S, Ctrl+Q
+rm- rf fresh-project/       # Remove the Git Repository
+```
+
+#### 5.1.2 Existing Source locally 
+In this section, we will use [Initializr](http://initializr.com) to generate files as our locally Git.
+Download a .zip file to project directory.
+```
+pwd
+cd GitHub
+unzip ~/Downloads/initializr-verekia-4.0.zip
+ls
+mv initializr web-project       # rename project 
+cd web-project
+ls                              # assume this is our project
+git status
+git add .                       # add all the new files
+git commit -m "My first commit, inline"
+git status
+rm -rf .git                      # remove .git documents, can't manage the files by Git
+cd ..
+rm -rf web-project
+```
+
+#### 5.1.3 Github Project Clone 
+
+1. Sign in Github;
+2. Find the project repository, and click **"Fork"** to copy the repository to your own Github;
+3. Find the **"Clone"** options, and copy the **"HTTPS"**;
+4. Using the following command to clone the repository local.
+   ```
+   pwd
+   cd Github
+   git clone https://github.com/RunzheZ
+   ```
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
