@@ -300,8 +300,32 @@ git add -A
 git commit
 ```
 
-We also can modify the file name in Finder. In this condition, there will be ".DS_Store" operating system level file
+We also can modify the file name in Finder. In this condition, there will be ".DS_Store" operating system level file. We want to git add the individual our modification file.
+
+``` bash
+# bash command renanme file in Finder
+git add newFileName.txt     # Git add specific file
+git add -u                  # update git list
+git commit
+```
 > Deleting Files
+>> Case 1. Delete the untracked file
+``` bash
+mate test_delete.txt        # create a new file and untracked by Git
+rm test_delete.txt          # because it's untracked file, only need to use bash command rm to remove
+```
+
+>> Case 2. Delete the Git tracked file
+``` bash
+mate test_delete.txt        # create a new file and untracked by Git
+git add test_delete.txt
+git commit -m "Add test_delete.txt"
+git ls-files                # check the tracked files
+git rm test_delete.txt          # because it's untracked file, only need to use bash command rm to remove
+git commit -m "Deleting new file"
+```
+
+>> How to back out a staged deletion
 
 ### 5.4 History and Aliases
 
