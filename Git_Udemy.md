@@ -239,14 +239,14 @@ git commit -am "Test tracked files"
 >>Best way to update files to remote repository is to add all the modification or new files to staging area first, then commit together.
 
 >Recursive Add  
-If we create a new deep nesting folder, such as level1/level2/level3, and each level has other new files. We need use **"git add ."** to add the recursive folders to staging area.
+>>If we create a new deep nesting folder, such as level1/level2/level3, and each level has other new files. We need use **"git add ."** to add the recursive folders to staging area.
 
 ```bash
 git add .
 ```
 
 > Backing Out Changes  
-> This backing out is only works for the modification in staging area. This is **unstage** and **checkout** process.
+>> This backing out is only works for the modification in staging area. This is **unstage** and **checkout** process.
 
 ```bash
 git add test.txt
@@ -256,9 +256,51 @@ git checkout -- test.txt                # reload the previous test.txt
 ```
 
 > Renaming and Moving Files  
->  There are two ways to remane or move files. One is using Git command; another is using bash command.
-> 
+>>  There are two ways to remane or move files. One is using Git command; another is using bash command.
+``` bash
+# git command renaming and moving files
+git mv test.txt test_new.txt
+git status          # it will appear rename
+git commit -m "renaming test.txt file"      # rename the file, before other modification
+```
 
+``` bash
+# bash command renaming and moving files
+mv test.txt test_new.txt
+git status          # it will appear delete original file and have another new file
+git add -A          #  -A will recursively add any changes(renamed, moved or deleted)
+git status          # it will appear rename file
+git commit          # add commit in mate
+```
+
+Rename the file then back out.
+
+``` bash
+# git command renaming and moving files
+git mv test.txt test_new.txt
+git status          # it will appear rename
+git mv test_new.txt test.txt
+git status
+```
+
+``` bash
+# git command and moving files to another directory
+git mv test.txt newFolder
+cd newFolder
+git status          # it will appear rename
+git commit
+```
+
+``` bash
+# bash command and moving files to another directory
+mv test.txt ..      # moveing the test.txt to the up folder
+cd ..
+git status          # it will appear rename
+git add -A
+git commit
+```
+
+We also can modify the file name in Finder. In this condition, there will be ".DS_Store" operating system level file
 > Deleting Files
 
 ### 5.4 History and Aliases
