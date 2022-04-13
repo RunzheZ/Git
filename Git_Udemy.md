@@ -235,17 +235,17 @@ git ls-files                # To check the tracked files list
 git commit -am "Test tracked files"
 ```
 
->Eidting Files      
+> **Eidting Files**      
 >>Best way to update files to remote repository is to add all the modification or new files to staging area first, then commit together.
 
->Recursive Add  
+> **Recursive Add**  
 >>If we create a new deep nesting folder, such as level1/level2/level3, and each level has other new files. We need use **"git add ."** to add the recursive folders to staging area.
 
 ```bash
 git add .
 ```
 
-> Backing Out Changes  
+> **Backing Out Changes**
 >> This backing out is only works for the modification in staging area. This is **unstage** and **checkout** process.
 
 ```bash
@@ -255,7 +255,7 @@ git reset HEAD test.txt                 # unstage the added document
 git checkout -- test.txt                # reload the previous test.txt
 ```
 
-> Renaming and Moving Files  
+> **Renaming and Moving Files** 
 >>  There are two ways to remane or move files. One is using Git command; another is using bash command.
 ``` bash
 # git command renaming and moving files
@@ -308,7 +308,7 @@ git add newFileName.txt     # Git add specific file
 git add -u                  # update git list
 git commit
 ```
-> Deleting Files
+> **Deleting Files**
 >> Case 1. Delete the untracked file
 ``` bash
 mate test_delete.txt        # create a new file and untracked by Git
@@ -325,7 +325,7 @@ git rm test_delete.txt          # for the tracked files, we can use git rm to re
 git commit -m "Deleting new file"
 ```
 
-> How to back out a staged deletion
+> **How to back out a staged deletion**
 ``` bash
 git ls-files                    # check the tracked files
 git rm test_delete.txt          # remove file
@@ -335,7 +335,7 @@ git check out -- test_delete.txt    # check out the deleted file
 ls                              # the deleted file will be back out
 ```
 
-> Remove folder and its subfiles
+> **Remove folder and its subfiles**
 ``` bash
 rm -rf folder                    # r is recursive f is force deletion
 git status
@@ -344,7 +344,7 @@ git commit -m "deleting the folder and all children"
 ```
 
 ### 5.4 History and Aliases
-
+> **Check Git Log History**
 ``` bash
 git help log                            # Press q to out the help window
 git log                                 # check log history
@@ -356,6 +356,25 @@ git log --follow -- test.txt            # rename or moving log
 git show 4fbe838de2fc0fab561a0a7a91f187a3fa285257git commit -m 
 # detial of a specific log information
 ```
+
+> **Git Alias**  
+> Sometimes the Git commands are too long, such as
+```bash
+git log --all --graph --decorate --oneline
+```
+It's very useful, but it's too long for everytime to use.
+We prefer to create some alias for these useful command.
+```bash
+git config --global alias.hist "log --all --graph --decorate --oneline"
+# setup alias
+git hist
+mate ~/.gitconfig       # check .gitconfig
+```
+
+> **Git Ignore (Avoid unwanted files)**
+> This section will show how to exclude unwanted files.
+> 
+
 ## Section 6: Visual Merge/Diff Tool Installation
 
 ## Section 7: Comparisons
