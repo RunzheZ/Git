@@ -194,11 +194,11 @@ rm -rf web-project
 3. Find the **"Clone"** options, and copy the **"HTTPS"**;
 4. Using the following command to clone the repository local.
 
-   ```bash
-   pwd
-   cd Github
-   git clone https://github.com/RunzheZ
-   ```
+```bash
+pwd
+cd Github
+git clone https://github.com/RunzheZ
+```
 
 ### 5.2 Basic Git Workflow (add, commit, pull & push)
 
@@ -317,18 +317,45 @@ rm test_delete.txt          # because it's untracked file, only need to use bash
 
 >> Case 2. Delete the Git tracked file
 ``` bash
-mate test_delete.txt        # create a new file and untracked by Git
+mate test_delete.txt            # create a new file and untracked by Git
 git add test_delete.txt
 git commit -m "Add test_delete.txt"
-git ls-files                # check the tracked files
-git rm test_delete.txt          # because it's untracked file, only need to use bash command rm to remove
+git ls-files                    # check the tracked files
+git rm test_delete.txt          # for the tracked files, we can use git rm to remove them
 git commit -m "Deleting new file"
 ```
 
->> How to back out a staged deletion
+> How to back out a staged deletion
+``` bash
+git ls-files                    # check the tracked files
+git rm test_delete.txt          # remove file
+git reset HEAD test_delete.txt  # begin back out
+ls                              # the file is still missing
+git check out -- test_delete.txt    # check out the deleted file
+ls                              # the deleted file will be back out
+```
+
+> Remove folder and its subfiles
+``` bash
+rm -rf folder                    # r is recursive f is force deletion
+git status
+git add -A
+git commit -m "deleting the folder and all children"
+```
 
 ### 5.4 History and Aliases
 
+``` bash
+git help log                            # Press q to out the help window
+git log                                 # check log history
+git log --abbrev-commit                 # short name log history 
+git log --oneline --graph --decorate    # ** Very Useful, oneline log
+git log --since="3 days ago"            # 3 days log
+git log -- test.txt                     # specific document log
+git log --follow -- test.txt            # rename or moving log
+git show 4fbe838de2fc0fab561a0a7a91f187a3fa285257git commit -m 
+# detial of a specific log information
+```
 ## Section 6: Visual Merge/Diff Tool Installation
 
 ## Section 7: Comparisons
