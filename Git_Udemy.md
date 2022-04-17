@@ -373,12 +373,69 @@ mate ~/.gitconfig       # check .gitconfig
 
 > **Git Ignore (Avoid unwanted files)**  
 > This section will show how to exclude unwanted files, such as ".DS_Store".  
-> We will use the Git text file **".gitignore"**, which to recored all the files and floders that Git should ignore.
-> 
-> 
+> We will use the Git text file **".gitignore"**, which to recored all the files and floders that Git should ignore. (We can use "ls -al" to list all files and folders, including dot files and folders)
+
+```bash
+mate .gitignore
+```
+
+The format for this ".gitignore" file is one expression per line. The expression could be the name of a specific file, the name of folder, or a pattern like "*.txt".
+
+```bash
+# This is in mate .gitignore file
+MyFile.ext      # Specific File
+*.ext           # File Pattern
+my-folder/      # Folder
+
+# Examples
+.DS_Store       # ignore specific ".DS_Store" file
+*.log           # ignore all ".log" file
+log/            # ignore log folder and its files
+
+# Finally, Cleanup and Back to Origin
+git pull origin master      # pull first
+git push origin master      # push, origin is the name of remote repository, master is the default branch in Git repository
+```
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
+### 1. Install **P4Merge**
+Open the [PERFORCE](http:www.perforce.com).   
+DOWNLOADS --> Downloads --> LATEST RELEASES --> Clients --> [P4MERGE: VISUAL MERGE TOOL](https://www.perforce.com/downloads/visual-merge-tool)  
+Choose the correct family system. Then, download.  
+Open the downloaded "P4V.dmg" file, and move the "p4merge.app" to Applications folder.  
+Open "Launchpad" to open the new installed "p4merge.app", "command+q" quit.
+
+> Simple solution will match local master branch HEAD to origin.master branch HEAD.
+```
+git reset --hard origin/master
+```
+
+### 2. P4Merge for Mac Git Configuration
+1. Confirm the specific P4Merge executable.
+```bash
+cd  ~/Applications/p4merge.app/Contents/MacOS/
+ls -al
+./p4merge       # Run p4merge
+pwd
+```
+2. Set up p4merge as Git diff tool and set p4merge path. Also, we need disable the prompt.
+```bash
+git config --global diff.tool p4merge       # Set p4merge as diff.tool
+git config --global difftool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge  # Set p4merge path
+git config --global difftool.prompt false   # Disable the prompt
+```
+We can use the similar method to set up p3merge as Git merge tool.
+```bash
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
+git config --global mergetool.prompt false
+```
+Then, we can check all the Git config set up.
+```bash
+git config --global --list
+git config --global -e          # edit the .gitconfig file
+```
 ## Section 7: Comparisons
 
 ## Section 8: Branching and Merging
