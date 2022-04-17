@@ -371,8 +371,10 @@ git hist
 mate ~/.gitconfig       # check .gitconfig
 ```
 
-> **Git Ignore (Avoid unwanted files)**
-> This section will show how to exclude unwanted files.
+> **Git Ignore (Avoid unwanted files)**  
+> This section will show how to exclude unwanted files, such as ".DS_Store".  
+> We will use the Git text file **".gitignore"**, which to recored all the files and floders that Git should ignore.
+> 
 > 
 
 ## Section 6: Visual Merge/Diff Tool Installation
