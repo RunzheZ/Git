@@ -399,7 +399,7 @@ git push origin master      # push, origin is the name of remote repository, mas
 
 ## Section 6: Visual Merge/Diff Tool Installation
 
-### 1. Install **P4Merge**
+### 6.1 Install **P4Merge**
 Open the [PERFORCE](http:www.perforce.com).   
 DOWNLOADS --> Downloads --> LATEST RELEASES --> Clients --> [P4MERGE: VISUAL MERGE TOOL](https://www.perforce.com/downloads/visual-merge-tool)  
 Choose the correct family system. Then, download.  
@@ -411,7 +411,7 @@ Open "Launchpad" to open the new installed "p4merge.app", "command+q" quit.
 git reset --hard origin/master
 ```
 
-### 2. P4Merge for Mac Git Configuration
+### 6.2 P4Merge for Mac Git Configuration
 1. Confirm the specific P4Merge executable.
 ```bash
 cd  ~/Applications/p4merge.app/Contents/MacOS/
@@ -425,7 +425,7 @@ git config --global diff.tool p4merge       # Set p4merge as diff.tool
 git config --global difftool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge  # Set p4merge path
 git config --global difftool.prompt false   # Disable the prompt
 ```
-We can use the similar method to set up p3merge as Git merge tool.
+We can use the similar method to set up p4merge as Git merge tool.
 ```bash
 git config --global merge.tool p4merge
 git config --global mergetool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
@@ -438,7 +438,112 @@ git config --global -e          # edit the .gitconfig file
 ```
 ## Section 7: Comparisons
 
+**Basic Git Workflow Life Cycle Table**  
+| Local | Local | Local  | Remote  |
+| :------: | :------: | :------: | :------: |
+| Working Directory | Staging Area | Repository (.git folder) |Server (Github)| 
+
+### 7.1 Comparisons Working Dir VS. Staging Area
+We use the **"git diff"** to no what's the modification in "git status" result. This difference is betwwen the **Working Directory** and **Staging Area**.  
+
+We also can use the Git's **"difftool"** command to visually see the modification.
+```bash
+git diff            # prompt command to show the difference, use q to quit
+git difftool        # visually method to see difference using p4merge, use command + q to quit
+```
+
+### 7.2 Comparisons Working Dir VS. Repository
+We can use the **"git diff HEAD"** to compare the difference between **Working Directory** and **Local Repository**.  
+
+We also can use the Git's **"difftool"** command to visually see the modification.
+```bash
+git diff HEAD           # prompt command to show the difference, use q to quit
+git difftool HEAD       # visually method to see difference using p4merge, use command + q to quit
+```
+
+### 7.3 Comparisons Staging Area Dir VS. Repository
+We can use **"git diff --staged HEAD"** to compare the difference between **Staging Area** and **Local Repository(.git folder)**. The **HEAD** means the last commit on the current branch (Local).
+We also can use the Git's **"difftool"** command to visually see the modification.
+
+```bash
+git diff --staged HEAD      # prompt to check the diff, use q to quit
+git difftool --staged HEAD  # visually to check the diff, use command + q to quit
+```
+
+### 7.3 Comparisons Limit for One File
+
+We can add the specific file name in the "git diff" command to check one specific file difference.
+
+```bash
+git diff -- Git_Udemy.md        # we only check the README.md file difference
+git difftool -- Git_Udemy.md    
+```
+
+### 7.4 Comparisons Between Commits
+
+We compare the arbitrary commit and  the last commit. We need to use **"git log --oneline"**. It will show all the commits and the abbreviating label for each commit. Then, we use **"git diff reference1 reference2"** to compare two different commits.
+
+```bash
+git log --oneline
+git diff ae6f872 HEAD   # HEAD means the last commit
+git diff HEAD HEAD^     # compare HEAD and HEAD-1 commits
+git difftool HEAD HEAD^
+```
+
+If one side is referenced by "dev/null/", that means that this file didn't exist prior, followed by the other side.
+
+If there are several files modificaiton between two commits, the **difftool** shows file difference one by one, once we close the top one.
+
+### 7.5 Comparisons Local VS Remote
+
+We want to compare the difference between two branches. It's similar to compare the local master branch and remote master branch.
+
+```bash
+git diff master origin/master
+git difftool master origin/master
+```
+
+**"origin"** is the name of the remote reference that points back to GitHub (online), and **"/master"** is just the master branch on the Git repository on GitHub. The **"master"** is the local committed master branch, and it's also called **"HEAD"**.
+
+
+
 ## Section 8: Branching and Merging
+### 8.1 Branch Basic
+In this section, we begin to create a new branch and do modification, then, merge the stable modification to the master branch. We use **"git branch -a"** to list all the local and remote branches.
+```bash
+git branch -a
+```
+The asterisk(*) labels the current active branch.  
+> We use the **"git branch newBranchName"** to create a new branch.  
+> Use **"git checkout mynewbranch"** to switch branches.
+```bash
+git branch mynewbranch      # Create a new branch called "nynewbranch"
+git branch -a               # Will show the new branch in the list
+git checkout mynewbranch    # Switch to mynewbranch as active branch
+git branch -a               # The asterisk will label "mynewbranch"
+```
+
+Let's check the history of Git.
+```bash
+git log --oneline --decorate    # It will appear the history log
+
+# The first line will looks like
+e060xxx (HEAD, origin/master, origin/HEAD, mynewbranch, master)
+# HEAD usually points to the last commit on the current branch;
+
+git checkout master             # Switch back to the master branch
+git branch -m mynewbranch newbranch # Rename the branch
+git branch -a
+git branch -d newbranch         # Delete branch, we can't delete current branch
+```
+
+### 8.2 Happy Path: Fast Forward
+
+```bash
+git branch                      # list all local branch
+git branch -a                   # list all branches including remote branches
+
+```
 
 ## Section 9: Rebasing
 
