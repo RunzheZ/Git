@@ -508,6 +508,7 @@ git difftool master origin/master
 
 
 ## Section 8: Branching and Merging
+
 ### 8.1 Branch Basic
 In this section, we begin to create a new branch and do modification, then, merge the stable modification to the master branch. We use **"git branch -a"** to list all the local and remote branches.
 ```bash
@@ -538,11 +539,27 @@ git branch -d newbranch         # Delete branch, we can't delete current branch
 ```
 
 ### 8.2 Happy Path: Fast Forward
-
+> Faster Forward merge: there are no changes being made on the target branch (master).
+> Git places all the commites on the master branch, as if we never branched away. 
 ```bash
 git branch                      # list all local branch
 git branch -a                   # list all branches including remote branches
 
+git checkout -b title-change    # build a new branch called title-change and checkout it
+mate test.txt                   # change one file
+git status
+git commit  -am "Changing XXX file"
+git log --oneline --decorate   
+
+# Move the modification from title-change brach to master
+git checkout master             # change branch back to master
+git diff master title-change    # Show the difference between master brach and title-change branch
+git difftool master title-change # visual version to show difference
+git merge title-change          # merge the title-change branch to master
+git log --oneline --graph --decorate
+git branch 
+git branch -d title-change
+git branch
 ```
 
 ## Section 9: Rebasing
