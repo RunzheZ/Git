@@ -562,7 +562,86 @@ git branch -d title-change
 git branch
 ```
 
+### 8.3 Happy Path: w/0 Faster Forward
+
+```bash
+# commits in add-copyright branch 
+git checkout -b add-copyright   # create and switch to add-copyright branch
+mate test.txt                   # modification in add-copyright branch
+git commit -am "Adding text"    # add-copyright branch commit
+git log --oneline --grapy --decorate
+
+ # merge to master branch w/o faster forward
+git checkout master
+git merge add-copyright --no-ff # --no-ff means w/o faster forward
+git log --oneline --graph --decorate --all
+git branch -d add-copyright     # when we check the log, the commit still there, but no branch name label.
+```
+
+### 8.4 Automatic Merges
+
+> Automatic merge: Both of the sub-branch and master-branch has modification commits, but there are no conflicts. It can merge automatically.
+
+```bash
+# Create the simple-changes branch and do some modification
+git checkout -b simple-changes
+mate test.txt
+git commit -am "Modification in simple-changes branch test.txt"
+
+# Switch back to master branch and do some modification not conflict with simple-changes branch modification
+git checkout master
+mate start.txt
+git commit -am "Modification in master branch start.txt"
+
+# Check difference and automatic merge
+git log --oneline --graph --decorate --all
+git merge simple-changes -m "Merging changes from simple-changes branch"
+# the -m means this merge will result in a commit
+git log --oneline --graph --decorate --all
+git branch -d simple-changes
+```
+
+### 8.5 Merge Conflict and Resolution
+
+> If two branches have the modification in the same area of same file, the merge will conflict and we need to use the difftool to check the difference and choose what we want.
+
+```bash
+# Creat a new branch and do some modification
+git checkout -b realwork
+mate test.txt
+git commit -am "Making changes in realwork branch"
+
+# Switch back to master bracn and do modification in the same area of realwork branch
+git checkout master
+mate test.txt
+git commit -am "Making changes in master branch"
+
+git log --oneline --graph --decorate --all
+
+# Check the difference between two branches
+git diff master realwork
+git difftool master realwork
+
+# Merge conflict
+git merge realwork                      # will report a conflict problem
+git mergetool                           # use p4merge software to merge conflict
+git commit -m "Complete merge conflict" # commit the merge 
+
+# Ignore all the .orig files
+mate .gitignore                         # open .gitignore file and add *.orig
+
+# Delete the realwork branch and check log
+git branch -d realwork
+git log --oneline --graph --decorate --all
+
+git pull origin master
+git push origin master
+```
+
 ## Section 9: Rebasing
+
+### 9.1 Simple Rebase Example
+
 
 ## Section 10: Stashing
 
