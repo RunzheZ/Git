@@ -175,12 +175,14 @@ pwd
 cd GitHub
 unzip ~/Downloads/initializr-verekia-4.0.zip
 ls
-mv initializr web-project       # rename project 
+mv initializr web-project       # rename project ！！！ It's a good way to remane
 cd web-project
 ls                              # assume this is our project
+git init                        # Git will initialize a new repository using the current folder and current directory
+ls -al                          # we can find the .git folder
 git status
-git add .                       # add all the new files
-git commit -m "My first commit, inline"
+git add .                       # add all the new files recursively
+git commit -m "My first commit, inline"     # the git commit useing the  "-m" option to add commit message instead of using text editor
 git status
 rm -rf .git                      # remove .git documents, can't manage the files by Git
 cd ..
@@ -212,8 +214,8 @@ mate test.txt
 git add test.txt
 git status
 git commit              # use mate to command or git commit -m "This is commit"
-git pull origin master  # git config pull.rebase false(merge)/true(rebase)
-git push origin master
+git pull origin master  # git config pull.rebase false(merge)/true(rebase)， to keep the local repository up-to-date.
+git push origin master  # push any commits from the local repository to the remote repository by reference name; "origin" is the name of the remote repository that we cloned from; "master" is our master branch.
 ```
 
 ### 5.3 File Management (Remane, move & deletet files)
